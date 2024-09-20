@@ -29,7 +29,7 @@ def main():
             sleep(60)  # Optional: delay before retrying
 
 
-async def visit_page_and_screenshot(playwright, page_to_visit) -> None:
+async def visit_page(playwright, page_to_visit) -> None:
     '''
     Visit a page with a rotated header and take a screenshot
     '''
@@ -113,7 +113,7 @@ async def job(page_to_visit: str, simultaneous_runs: int) -> None:
         tasks = []
         for _ in range(simultaneous_runs):
             # headers = random.choice(header_list)
-            tasks.append(visit_page_and_screenshot(playwright, page_to_visit))
+            tasks.append(visit_page(playwright, page_to_visit))
 
         await asyncio.gather(*tasks)
 
